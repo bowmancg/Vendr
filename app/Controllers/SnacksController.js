@@ -4,7 +4,9 @@ import { setHTML } from "../Utils/Writer.js"
 
 function _drawSnacks() {
     let snack = appState.activeSnack
-    setHTML('active', snack.ActiveTemplate)
+    if(appState.activeSnack) {
+        setHTML('active', snack.ActiveTemplate)
+    }
 }
 
 function _drawActive() {
@@ -24,7 +26,7 @@ export class SnacksController {
         console.log('snacks controller');
         _drawMySnacks()
         _drawSnacks()
-        appState.on('activeSnacks', _drawActive)
+        appState.on('activeSnack', _drawActive)
         appState.on('mySnacks', _drawMySnacks)
     }
 
